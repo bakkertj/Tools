@@ -13,3 +13,13 @@ with open(sys.argv[1], newline='') as csvfile:
          f.write("adduser -p saHW9GdxihkGQ " +  row['NetID']+"\n")
 
 f.close();
+
+f = open("delete_student_accounts.sh", "w" );
+
+f.write("#!/bin/bash\n")
+with open(sys.argv[1], newline='') as csvfile:
+     reader = csv.DictReader(csvfile)
+     for row in reader:
+         f.write("userdel -rf " +  row['NetID']+"\n")
+
+f.close();
